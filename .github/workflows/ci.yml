@@ -28,3 +28,6 @@ jobs:
       - name: Run unit tests
         run: |
           python -m unittest discover -v
+defaults:
+  run:
+    working-directory: lab4/lab4_tests_example
