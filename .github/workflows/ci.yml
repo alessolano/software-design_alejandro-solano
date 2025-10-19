@@ -4,12 +4,18 @@ on:
   push:
   pull_request:
 
+defaults:
+  run:
+    working-directory: lab4/lab4_tests_example
+
 jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         python-version: ["3.11", "3.12"]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,9 +31,16 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
+      - name: Debug layout (opcional)
+        run: |
+          pwd
+          ls -la
+          echo "---- src ----"
+          ls -la src || true
+          echo "---- tests ----"
+          ls -la tests || true
+
       - name: Run unit tests
         run: |
+          export PYTHONPATH=.
           python -m unittest discover -v
-defaults:
-  run:
-    working-directory: lab4/lab4_tests_example
