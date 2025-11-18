@@ -1,10 +1,9 @@
-# cafeteria/domain/order.py
 from __future__ import annotations
 from dataclasses import dataclass
 from enum import Enum, auto
 
 from .products import Product
-from ..patterns.observer import Subject
+from patterns.observer import Subject
 
 
 class OrderStatus(Enum):

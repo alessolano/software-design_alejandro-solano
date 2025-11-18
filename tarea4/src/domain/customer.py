@@ -2,7 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import List
 
-from ..patterns.observer import Observer, Subject
+from patterns.observer import Observer, Subject
 
 
 @dataclass
